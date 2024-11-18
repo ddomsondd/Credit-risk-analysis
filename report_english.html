@@ -267,25 +267,37 @@
       <h2>Sample charts for the data set</h2>
       <div class="img_class">
         <div class="box">
-            <img src="plots/age_income.png" arc="" style="margin-right: 30px;"> 
+          <div style="flex-direction: column;">
+            <img src="plots/age_income.png" arc="" style="margin-right: 30px;">
+            <p style="font-style: italic; font-size: 14px; text-align: center; margin-top: 2px;">Chart 1.</p>
+          </div>
             A chart comparing age to annual salary, taking into account the type of education. Since there are many samples, simply including all the data does not provide much information. 
             Only places of denser and rarer dots representing samples are visible. That's why I added a solid chart that shows the average annual salary by specific age group. 
             So you can see that it fluctuates mainly in the range of PLN 20-25 thousand per year.
         </div>
 
         <div class="box">
+          <div style="flex-direction: column;">
             <img src="plots/children_credit_history.png" arc="" style="margin-right: 30px;">
+            <p style="font-style: italic; font-size: 14px; text-align: center; margin-top: 2px;">Chart 2.</p>
+          </div>
             The chart shows the relationship between the number of children and credit history. It illustrates that most loans are taken by individuals without children. 
             With each additional child, the number of loans decreases.
         </div>
 
         <div class="box">
+          <div style="flex-direction: column;">
             <img src="plots/income.png" arc="" style="margin-right: 30px;" >
-            The chart shows the distribution of average annual income in relation to the number of people. The largest group earns around 40,000 PLN annually, followed by incomes in the range of 15,000–20,000 PLN per year.
+            <p style="font-style: italic; font-size: 14px; text-align: center; margin-top: 2px;">Chart 3.</p>
+          </div>            
+          The chart shows the distribution of average annual income in relation to the number of people. The largest group earns around 40,000 PLN annually, followed by incomes in the range of 15,000–20,000 PLN per year.
         </div>
 
         <div class="box">
-            <img src="plots/employment_type.png" arc="" style=" margin-right: 30px;">
+          <div style="flex-direction: column;">
+            <img src="plots/employment_type.png" arc="" style="margin-right: 30px;" >
+            <p style="font-style: italic; font-size: 14px; text-align: center; margin-top: 2px;">Chart 4.</p>
+          </div>
             The chart shows employment types in relation to education level. An interesting observation is that, for each employment type, 
             the majority of individuals have a secondary education, followed by primary education, rather than higher education as one might expect.
         </div>
@@ -354,12 +366,27 @@
       <p style="font-style: italic; font-size: 14px; text-align: center; margin-top: 2px;">Table 3. Presentation of the performance metrics for the model fitting.</p>  
       
       <h3>Confusion matrix for each model</h3>
-      <div class="img_class">
-        <img src="plots/plot_class_DTC.png" arc="Confusion matrix for Decision Tree Classifier">
-        <img src="plots/plot_class_RFC.png" arc="Confusion matrix for Random Forest Classifier">
-        <img src="plots/plot_class_SVC.png" arc="Confusion matrix for Support Machine Classifier">
-        <img src="plots/plot_class_GNB.png" arc="Confusion matrix for Gaussian Naive Bayes Classifier">
-        <img src="plots/plot_class_XGBC.png" arc="Confusion matrix for XGBoost Classifier">
+      <div class="img_inline">
+        <div style="flex-direction: column;">
+          <img src="plots/plot_class_DTC.png" arc="Confusion matrix for Decision Tree Classifier">
+          <p style="font-style: italic; font-size: 14px; text-align: center; margin-top: 2px;">1. Confusion matrix for Decision Tree Classification model.</p>
+        </div>
+        <div style="flex-direction: column;">
+          <img src="plots/plot_class_RFC.png" arc="Confusion matrix for Random Forest Classifier">
+          <p style="font-style: italic; font-size: 14px; text-align: center; margin-top: 2px;">2. Confusion matrix for Random Forest Classification model.</p>
+        </div>
+        <div style="flex-direction: column;">
+          <img src="plots/plot_class_SVC.png" arc="Confusion matrix for Support Vector Machine Classifier">
+          <p style="font-style: italic; font-size: 14px; text-align: center; margin-top: 2px;">3. Confusion matrix for Support Vector Machine Classification model.</p>
+        </div>
+        <div style="flex-direction: column;">
+          <img src="plots/plot_class_GNB.png" arc="Confusion matrix for Gaussian Naive Bayes Classifier">
+          <p style="font-style: italic; font-size: 14px; text-align: center; margin-top: 2px;">4. Confusion matrix for Gaussian Naive Bayes model.</p>
+        </div>
+        <div style="flex-direction: column;">
+          <img src="plots/plot_class_XGBC.png" arc="Confusion matrix for XGBoost Classifier">
+          <p style="font-style: italic; font-size: 14px; text-align: center; margin-top: 2px;">5. Confusion matrix for XGBoost Classification model.</p>
+        </div>
       </div>
       
       <p>The confusion matrices indicate high accuracy in classifying examples, but it is evident that the dataset has been significantly reduced. 
