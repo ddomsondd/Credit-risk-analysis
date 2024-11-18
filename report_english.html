@@ -1,0 +1,375 @@
+
+<!DOCTYPE html>
+<html>
+<head>    
+    <title>Atlas Bootcamp</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+
+    <div class="header">
+      <h1>Credit risk analysis</h1>
+    </div>
+
+    <div class="main">
+      <p>I started working on the report by familiarizing myself with the data set and analyzing the data.</p>
+      <table class="dataframe">
+        <thead>
+          <tr style="text-align: right;">
+            <th></th>
+            <th>Unnamed: 0</th>
+            <th>age</th>
+            <th>income</th>
+            <th>children</th>
+            <th>credit_history</th>
+            <th>overdue_payments</th>
+            <th>active_loans</th>
+            <th>years_in_job</th>
+            <th>employment_type</th>
+            <th>owns_property</th>
+            <th>assets_value</th>
+            <th>other_loans</th>
+            <th>education</th>
+            <th>city</th>
+            <th>marital_status</th>
+            <th>support_indicator</th>
+            <th>credit_risk</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>0</th>
+            <td>0</td>
+            <td>44</td>
+            <td>15689 złoty</td>
+            <td>brak</td>
+            <td>dobra historia</td>
+            <td>brak opóźnień</td>
+            <td>2</td>
+            <td>9</td>
+            <td>samozatrudnienie</td>
+            <td>NaN</td>
+            <td>NaN</td>
+            <td>1</td>
+            <td>wyższe</td>
+            <td>małe</td>
+            <td>żonaty/zamężna</td>
+            <td>0.178131</td>
+            <td>0</td>
+          </tr>
+          <tr>
+            <th>1</th>
+            <td>1</td>
+            <td>38</td>
+            <td>18906 złoty</td>
+            <td>4 dzieci</td>
+            <td>brak historii</td>
+            <td>brak opóźnień</td>
+            <td>0</td>
+            <td>1</td>
+            <td>stała</td>
+            <td>tak</td>
+            <td>62965 złoty</td>
+            <td>0</td>
+            <td>średnie</td>
+            <td>średnie</td>
+            <td>kawaler/panna</td>
+            <td>0.370480</td>
+            <td>0</td>
+          </tr>
+          <tr>
+            <th>2</th>
+            <td>2</td>
+            <td>46</td>
+            <td>16338 złoty</td>
+            <td>2 dzieci</td>
+            <td>NaN</td>
+            <td>NaN</td>
+            <td>2</td>
+            <td>4</td>
+            <td>brak</td>
+            <td>tak</td>
+            <td>124967 złoty</td>
+            <td>0</td>
+            <td>podstawowe</td>
+            <td>duże</td>
+            <td>żonaty/zamężna</td>
+            <td>0.712334</td>
+            <td>0</td>
+          </tr>
+          <tr>
+            <th>3</th>
+            <td>3</td>
+            <td>55</td>
+            <td>23276 złoty</td>
+            <td>3 dzieci</td>
+            <td>dobra historia</td>
+            <td>opóźnienia</td>
+            <td>2</td>
+            <td>10</td>
+            <td>stała</td>
+            <td>tak</td>
+            <td>52147 złoty</td>
+            <td>1</td>
+            <td>średnie</td>
+            <td>małe</td>
+            <td>kawaler/panna</td>
+            <td>0.665050</td>
+            <td>0</td>
+          </tr>
+          <tr>
+            <th>4</th>
+            <td>4</td>
+            <td>37</td>
+            <td>40000 złoty</td>
+            <td>1 dzieci</td>
+            <td>brak historii</td>
+            <td>NaN</td>
+            <td>1</td>
+            <td>9</td>
+            <td>określona</td>
+            <td>nie</td>
+            <td>33957 złoty</td>
+            <td>1</td>
+            <td>wyższe</td>
+            <td>małe</td>
+            <td>kawaler/panna</td>
+            <td>0.607151</td>
+            <td>0</td>
+          </tr>
+        </tbody>
+      </table>
+      <p style="font-style: italic; font-size: 14px; text-align: center; margin-top: 2px;">Table 1. A representation of the first few rows of the dataset.</p>
+      <p>
+        Some columns, like 'Unnamed: 0' and 'support_indicator,' do not contain useful information and can be removed. 
+        Some columns need to be transformed to make the data easier to interpret, such as removing unnecessary strings like "dzieci" or "złoty". 
+        Rows with missing values (NaN) will be deleted, but to avoid losing too much data, some NaN values will be replaced with random values from the same column. 
+        Columns will also be converted into one-hot encoded columns. All data processing functions are included in the <span style="font-style: italic;">data_preparation.py</span> file. 
+        The cleaned data is then ready for preliminary analysis.
+      </p>
+      <table class="dataframe">
+        <thead>
+          <tr style="text-align: right;">
+            <th></th>
+            <th>age</th>
+            <th>income</th>
+            <th>children</th>
+            <th>credit_history</th>
+            <th>overdue_payments</th>
+            <th>active_loans</th>
+            <th>years_in_job</th>
+            <th>employment_type</th>
+            <th>owns_property</th>
+            <th>assets_value</th>
+            <th>other_loans</th>
+            <th>education</th>
+            <th>city</th>
+            <th>marital_status</th>
+            <th>credit_risk</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>1</th>
+            <td>38</td>
+            <td>18906</td>
+            <td>4</td>
+            <td>brak historii</td>
+            <td>brak opóźnień</td>
+            <td>0</td>
+            <td>1</td>
+            <td>stała</td>
+            <td>tak</td>
+            <td>62965</td>
+            <td>0</td>
+            <td>średnie</td>
+            <td>średnie</td>
+            <td>kawaler/panna</td>
+            <td>0</td>
+          </tr>
+          <tr>
+            <th>2</th>
+            <td>46</td>
+            <td>16338</td>
+            <td>2</td>
+            <td>zła historia</td>
+            <td>brak opóźnień</td>
+            <td>2</td>
+            <td>4</td>
+            <td>brak</td>
+            <td>tak</td>
+            <td>124967</td>
+            <td>0</td>
+            <td>podstawowe</td>
+            <td>duże</td>
+            <td>żonaty/zamężna</td>
+            <td>0</td>
+          </tr>
+          <tr>
+            <th>3</th>
+            <td>55</td>
+            <td>23276</td>
+            <td>3</td>
+            <td>dobra historia</td>
+            <td>opóźnienia</td>
+            <td>2</td>
+            <td>10</td>
+            <td>stała</td>
+            <td>tak</td>
+            <td>52147</td>
+            <td>1</td>
+            <td>średnie</td>
+            <td>małe</td>
+            <td>kawaler/panna</td>
+            <td>0</td>
+          </tr>
+          <tr>
+            <th>4</th>
+            <td>37</td>
+            <td>40000</td>
+            <td>1</td>
+            <td>brak historii</td>
+            <td>brak opóźnień</td>
+            <td>1</td>
+            <td>9</td>
+            <td>określona</td>
+            <td>nie</td>
+            <td>33957</td>
+            <td>1</td>
+            <td>wyższe</td>
+            <td>małe</td>
+            <td>kawaler/panna</td>
+            <td>0</td>
+          </tr>
+          <tr>
+            <th>6</th>
+            <td>55</td>
+            <td>36330</td>
+            <td>0</td>
+            <td>brak historii</td>
+            <td>brak opóźnień</td>
+            <td>1</td>
+            <td>15</td>
+            <td>stała</td>
+            <td>tak</td>
+            <td>122819</td>
+            <td>1</td>
+            <td>średnie</td>
+            <td>duże</td>
+            <td>rozwiedziony/rozwiedziona</td>
+            <td>0</td>
+          </tr>
+        </tbody>
+      </table>
+      <p style="font-style: italic; font-size: 14px; text-align: center; margin-top: 2px;">Table 2. A representation of the first few rows of a dataset after data processing.</p>
+      
+      <h2>Sample charts for the data set</h2>
+      <div class="img_class">
+        <div class="box">
+            <img src="plots/age_income.png" arc="" style="margin-right: 30px;"> 
+            A chart comparing age to annual salary, taking into account the type of education. Since there are many samples, simply including all the data does not provide much information. 
+            Only places of denser and rarer dots representing samples are visible. That's why I added a solid chart that shows the average annual salary by specific age group. 
+            So you can see that it fluctuates mainly in the range of PLN 20-25 thousand per year.
+        </div>
+
+        <div class="box">
+            <img src="plots/children_credit_history.png" arc="" style="margin-right: 30px;">
+            The chart shows the relationship between the number of children and credit history. It illustrates that most loans are taken by individuals without children. 
+            With each additional child, the number of loans decreases.
+        </div>
+
+        <div class="box">
+            <img src="plots/income.png" arc="" style="margin-right: 30px;" >
+            The chart shows the distribution of average annual income in relation to the number of people. The largest group earns around 40,000 PLN annually, followed by incomes in the range of 15,000–20,000 PLN per year.
+        </div>
+
+        <div class="box">
+            <img src="plots/employment_type.png" arc="" style=" margin-right: 30px;">
+            The chart shows employment types in relation to education level. An interesting observation is that, for each employment type, 
+            the majority of individuals have a secondary education, followed by primary education, rather than higher education as one might expect.
+        </div>
+      </div>
+
+      <h2>Classifier models</h2>
+      <p>I compared five classification models:
+        <ul>
+          <li>Decision Tree Classifier</li>
+          <li>Random Forest Classifier</li>
+          <li>Support Vector Classifier</li>
+          <li>Gaussian Naive Bayes</li> 
+          <li>XGBoost Classifier</li>
+        </ul>
+        As you can see from the table below, the best-fitting models are random forest and XGBoost. The accuracy and specificity statistics of all models are very similar and high, but the exception is the sensitivity index, which in the case of the support vector machine and the naive Bayes classifier indicates 0, which may indicate some errors or problems with the data.
+      </p>
+      
+      <table class="dataframe">
+            <thead>
+              <tr style="text-align: right;"> 
+                <th></th>
+                <th>Model</th>
+                <th>Accuracy</th>
+                <th>Recall</th>
+                <th>Specificity</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th>0</th>
+                <td>DTC</td>
+                <td>0.9865</td>
+                <td>0.7727</td>
+                <td>0.9906</td>
+              </tr>
+              <tr>
+                <th>1</th>
+                <td>RFC</td>
+                <td>0.9941</td>
+                <td>0.6818</td>
+                <td>1.0000</td>
+              </tr>
+              <tr>
+                <th>2</th>
+                <td>SVC</td>
+                <td>0.9815</td>
+                <td>0.0000</td>
+                <td>1.0000</td>
+              </tr>
+              <tr>
+                <th>3</th>
+                <td>GNB</td>
+                <td>0.9815</td>
+                <td>0.0000</td>
+                <td>1.0000</td>
+              </tr>
+              <tr>
+                <th>4</th>
+                <td>XGBC</td>
+                <td>0.9941</td>
+                <td>0.6818</td>
+                <td>1.0000</td>
+              </tr>
+            </tbody>
+      </table>
+      <p style="font-style: italic; font-size: 14px; text-align: center; margin-top: 2px;">Table 3. Presentation of the performance metrics for the model fitting.</p>  
+      
+      <h3>Confusion matrix for each model</h3>
+      <div class="img_class">
+        <img src="plots/plot_class_DTC.png" arc="Confusion matrix for Decision Tree Classifier">
+        <img src="plots/plot_class_RFC.png" arc="Confusion matrix for Random Forest Classifier">
+        <img src="plots/plot_class_SVC.png" arc="Confusion matrix for Support Machine Classifier">
+        <img src="plots/plot_class_GNB.png" arc="Confusion matrix for Gaussian Naive Bayes Classifier">
+        <img src="plots/plot_class_XGBC.png" arc="Confusion matrix for XGBoost Classifier">
+      </div>
+      
+      <p>The confusion matrices indicate high accuracy in classifying examples, but it is evident that the dataset has been significantly reduced. 
+        Initially, the dataset contained around 10,000 rows, so the test set should have about 2,000 samples. However, the confusion matrices show only 1,189 samples. 
+        This reduction is due to the removal of rows with missing values (NaN). This is not necessarily a bad number (probably ;P), because initially, 
+        I only used the method of deleting rows with NaN values, which resulted in only 585 samples, meaning the dataset was reduced by almost 3.5 times. 
+        After applying the method of replacing some NaN values with random values from the respective columns, the dataset was much less reduced.
+      </p>
+    </div>
+    <div class="footer"></div>
+  </div>
+</body>
+</html> 
