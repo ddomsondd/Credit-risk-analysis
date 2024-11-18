@@ -41,8 +41,8 @@ def create_regression_model(model, X, y, model_name):
 
 one_hot_data = data_preparation_one_hot()
 
-X = one_hot_data.drop('children', axis=1)
-y = one_hot_data['children']
+X = one_hot_data.drop('income', axis=1)
+y = one_hot_data['income']
 
 regression_models = [LinearRegression(), XGBRegressor()]
 models_names = ['LR', 'XGBR']
