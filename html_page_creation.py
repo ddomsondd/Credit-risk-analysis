@@ -9,7 +9,7 @@ table_view_1 = str(data.head().to_html())
 
 data_2 = data_preparation()
 data_2 = pd.DataFrame(data_2)
-table_view_2 = str(data.head().to_html())
+table_view_2 = str(data_2.head().to_html())
 
 results_classification = execute_classification()
 results_classification = pd.DataFrame(results_classification)
