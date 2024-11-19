@@ -40,26 +40,26 @@ def create_classification_model(model, X, y, model_name):
     return accuracy, recall, specificity
 
 
-one_hot_data = data_preparation_one_hot()
+def execute_classification():
+    one_hot_data = data_preparation_one_hot()
 
-X = one_hot_data.drop('credit_risk', axis=1)
-y = one_hot_data['credit_risk']
+    X = one_hot_data.drop('credit_risk', axis=1)
+    y = one_hot_data['credit_risk']
 
 
-models = [DecisionTreeClassifier(), RandomForestClassifier(), SVC(), GaussianNB(), XGBClassifier()]
-models_names = ['DTC', 'RFC', 'SVC', 'GNB', 'XGBC']
-results = []
+    models = [DecisionTreeClassifier(), RandomForestClassifier(), SVC(), GaussianNB(), XGBClassifier()]
+    models_names = ['DTC', 'RFC', 'SVC', 'GNB', 'XGBC']
+    results = []
 
-for model, model_name in zip(models, models_names):
-    accuracy, recall, specificity = create_classification_model(model, X, y, model_name)
-    results.append({
-        'Model': model_name,
-        'Accuracy': accuracy,
-        'Recall': recall,
-        'Specificity': specificity
-    })
+    for model, model_name in zip(models, models_names):
+        accuracy, recall, specificity = create_classification_model(model, X, y, model_name)
+        results.append({
+            'Model': model_name,
+            'Accuracy': accuracy,
+            'Recall': recall,
+            'Specificity': specificity
+        })
 
-df = pd.DataFrame(results)
-print(df.to_html())
+    return results
 
 
