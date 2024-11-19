@@ -4,10 +4,10 @@ This project was developed for an university club purposes. It includes basic da
 
 ## Features
 
-- Data Processing: The project processes a dataset, performing necessary cleaning and transformations.
-- Data Analysis: Various analyses are conducted on the dataset to gain insights and identify trends.
-- Visualization: Multiple charts are created to visually represent the findings from the analysis.
-- Predictive Models: Several predictive models are built to forecast outcomes based on the data.
+- **Data Processing:** The project processes a dataset, performing necessary cleaning and transformations.
+- **Data Analysis:** Various analyses are conducted on the dataset to gain insights and identify trends.
+- **Visualization:** Multiple charts are created to visually represent the findings from the analysis.
+- **Predictive Models:** Several predictive models are built to forecast outcomes based on the data.
 
 ## Reports
 
