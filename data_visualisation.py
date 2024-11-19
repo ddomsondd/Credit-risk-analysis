@@ -41,3 +41,22 @@ plt.xlabel('Employment type')
 plt.ylabel('Number of people')
 plt.legend(title='Wykształcenie')
 plt.savefig(f'plots/employment_type.png')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
