@@ -1,4 +1,4 @@
-# Credit-risk-analysis
+# Credit risk analysis
 
 This project was developed for an university club purposes. It includes basic data processing and analysis, as well as the creation of several charts and predictive models using Python.
 
@@ -11,7 +11,7 @@ This project was developed for an university club purposes. It includes basic da
 
 ## Reports
 
-A more detailed report, available in both Polish and English versions, can be found in the HTML report file. You don't have to download this repository to see the reports. Just click report.html or report-english.html > View raw > and change url address from "https://raw.githubusercontent.com/..." to "https://raw.githack.com/..."
+A more detailed report, available in both Polish and English versions, can be found in the HTML report file. You don't have to download this repository to see the reports. Just click report.html or report-english.html > Raw (on the top bar on the right side) > and change url address from "https://raw.githubusercontent.com/..." to "https://raw.githack.com/..."
 
 ## Tech
 
