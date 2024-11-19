@@ -1,6 +1,6 @@
 # Credit risk analysis
 
-This project was developed for an university club purposes. It includes basic data processing and analysis, as well as the creation of several charts and predictive models using Python.
+This project was developed for an university club purposes. It includes basic data processing and analysis, as well as the creation of several charts and predictive models using Python. This project isn't responsive.
 
 ## Features
 
