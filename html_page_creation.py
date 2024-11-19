@@ -257,6 +257,6 @@ script_polish = '''
 </html> 
 '''
 
-f = open('report_.html', 'w', encoding='utf-8')
+f = open('report.html', 'w', encoding='utf-8')
 f.write(script_polish)
 f.close()
