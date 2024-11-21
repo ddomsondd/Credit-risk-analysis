@@ -50,26 +50,3 @@ def data_preparation_one_hot():
     one_hot_data = pd.get_dummies(data, columns = ['credit_history', 'overdue_payments', 'employment_type', 'owns_property', 'education', 'city', 'marital_status'], dtype=int)
     #one_hot_data.info()
     return one_hot_data
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

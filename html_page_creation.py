@@ -15,133 +15,6 @@ results_classification = execute_classification()
 results_classification = pd.DataFrame(results_classification)
 results_classification_table = str(results_classification.to_html())
 
-script_english = '''
-<!DOCTYPE html>
-<html>
-<head>    
-    <title>Atlas Bootcamp</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <div class="container">
-
-    <div class="header">
-      <h1>Credit risk analysis</h1>
-    </div>
-
-    <div class="main">
-      <p>I started working on the report by familiarizing myself with the data set and analyzing the data.</p>
-''' + table_view_1 + '''
-      <p style="font-style: italic; font-size: 14px; text-align: center; margin-top: 2px;">Table 1. A representation of the first few rows of the dataset.</p>
-      <p>
-        Some columns, like 'Unnamed: 0' and 'support_indicator,' do not contain useful information and can be removed. 
-        Some columns need to be transformed to make the data easier to interpret, such as removing unnecessary strings like "dzieci" or "złoty". 
-        Rows with missing values (NaN) will be deleted, but to avoid losing too much data, some NaN values will be replaced with random values from the same column. 
-        Columns will also be converted into one-hot encoded columns. All data processing functions are included in the <span style="font-style: italic;">data_preparation.py</span> file. 
-        The cleaned data is then ready for preliminary analysis.
-      </p>
-      ''' + table_view_2 + '''
-            <p style="font-style: italic; font-size: 14px; text-align: center; margin-top: 2px;">Table 2. A representation of the first few rows of a dataset after data processing.</p>
-      
-      <h2>Sample charts for the data set</h2>
-      <p>All the charts I created in the file <span style="font-style: italic;">data_visualistion.py</span>.</p>
-      <div class="img_class">
-        <div class="box">
-          <div style="flex-direction: column;">
-            <img src="plots/age_income.png" arc="" style="margin-right: 30px;">
-            <p style="font-style: italic; font-size: 14px; text-align: center; margin-top: 2px;">Chart 1.</p>
-          </div>
-            A chart comparing age to annual salary, taking into account the type of education. Since there are many samples, simply including all the data does not provide much information. 
-            Only places of denser and rarer dots representing samples are visible. That's why I added a solid chart that shows the average annual salary by specific age group. 
-            So you can see that it fluctuates mainly in the range of PLN 20-25 thousand per year.
-        </div>
-
-        <div class="box">
-          <div style="flex-direction: column;">
-            <img src="plots/children_credit_history.png" arc="" style="margin-right: 30px;">
-            <p style="font-style: italic; font-size: 14px; text-align: center; margin-top: 2px;">Chart 2.</p>
-          </div>
-            The chart shows the relationship between the number of children and credit history. It illustrates that most loans are taken by individuals without children. 
-            With each additional child, the number of loans decreases.
-        </div>
-
-        <div class="box">
-          <div style="flex-direction: column;">
-            <img src="plots/income.png" arc="" style="margin-right: 30px;" >
-            <p style="font-style: italic; font-size: 14px; text-align: center; margin-top: 2px;">Chart 3.</p>
-          </div>            
-          The chart shows the distribution of average annual income in relation to the number of people. The largest group earns around 40,000 PLN annually, followed by incomes in the range of 15,000–20,000 PLN per year.
-        </div>
-
-        <div class="box">
-          <div style="flex-direction: column;">
-            <img src="plots/employment_type.png" arc="" style="margin-right: 30px;" >
-            <p style="font-style: italic; font-size: 14px; text-align: center; margin-top: 2px;">Chart 4.</p>
-          </div>
-            The chart shows employment types in relation to education level. An interesting observation is that, for each employment type, 
-            the majority of individuals have a secondary education, followed by primary education, rather than higher education as one might expect.
-        </div>
-      </div>
-
-      <h2>Classifier models</h2>
-      <p>I compared five classification models. I created the models in the file <span style="font-style: italic;">classification.py</span>.
-        <ul>
-          <li>Decision Tree Classifier</li>
-          <li>Random Forest Classifier</li>
-          <li>Support Vector Classifier</li>
-          <li>Gaussian Naive Bayes</li> 
-          <li>XGBoost Classifier</li>
-        </ul>
-        As you can see from the table below, the best-fitting models are random forest and XGBoost. The accuracy and specificity statistics of all models are very similar and high, but the exception is the sensitivity index, which in the case of the support vector machine and the naive Bayes classifier indicates 0, which may indicate some errors or problems with the data.
-      </p>
-      
-    ''' + results_classification_table + '''
-      <p style="font-style: italic; font-size: 14px; text-align: center; margin-top: 2px;">Table 3. Presentation of the performance metrics for the model fitting.</p>  
-      
-      <h3>Confusion matrix for each model</h3>
-      <div class="img_inline">
-        <div style="flex-direction: column;">
-          <img src="plots/plot_class_DTC.png" arc="Confusion matrix for Decision Tree Classifier">
-          <p style="font-style: italic; font-size: 14px; text-align: center; margin-top: 2px;">1. Confusion matrix for Decision Tree Classification model.</p>
-        </div>
-        <div style="flex-direction: column;">
-          <img src="plots/plot_class_RFC.png" arc="Confusion matrix for Random Forest Classifier">
-          <p style="font-style: italic; font-size: 14px; text-align: center; margin-top: 2px;">2. Confusion matrix for Random Forest Classification model.</p>
-        </div>
-        <div style="flex-direction: column;">
-          <img src="plots/plot_class_SVC.png" arc="Confusion matrix for Support Vector Machine Classifier">
-          <p style="font-style: italic; font-size: 14px; text-align: center; margin-top: 2px;">3. Confusion matrix for Support Vector Machine Classification model.</p>
-        </div>
-        <div style="flex-direction: column;">
-          <img src="plots/plot_class_GNB.png" arc="Confusion matrix for Gaussian Naive Bayes Classifier">
-          <p style="font-style: italic; font-size: 14px; text-align: center; margin-top: 2px;">4. Confusion matrix for Gaussian Naive Bayes model.</p>
-        </div>
-        <div style="flex-direction: column;">
-          <img src="plots/plot_class_XGBC.png" arc="Confusion matrix for XGBoost Classifier">
-          <p style="font-style: italic; font-size: 14px; text-align: center; margin-top: 2px;">5. Confusion matrix for XGBoost Classification model.</p>
-        </div>
-      </div>
-      
-      <p>The confusion matrices indicate high accuracy in classifying examples, but it is evident that the dataset has been significantly reduced. 
-        Initially, the dataset contained around 10,000 rows, so the test set should have about 2,000 samples. However, the confusion matrices show only 1,189 samples. 
-        This reduction is due to the removal of rows with missing values (NaN). This is not necessarily a bad number (probably ;P), because initially, 
-        I only used the method of deleting rows with NaN values, which resulted in only 585 samples, meaning the dataset was reduced by almost 3.5 times. 
-        After applying the method of replacing some NaN values with random values from the respective columns, the dataset was much less reduced.
-      </p>
-    </div>
-    <div class="footer"></div>
-  </div>
-</body>
-</html> 
-'''
-
-
-
-f = open('report_english.html', 'w', encoding='utf-8')
-f.write(script_english)
-f.close()
-
-
 
 script_polish = '''
 <!DOCTYPE html>
@@ -262,28 +135,130 @@ f.write(script_polish)
 f.close()
 
 
+#English version
+script_english = '''
+<!DOCTYPE html>
+<html>
+<head>    
+    <title>Atlas Bootcamp</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
 
+    <div class="header">
+      <h1>Credit risk analysis</h1>
+    </div>
 
+    <div class="main">
+      <p>I started working on the report by familiarizing myself with the data set and analyzing the data.</p>
+''' + table_view_1 + '''
+      <p style="font-style: italic; font-size: 14px; text-align: center; margin-top: 2px;">Table 1. A representation of the first few rows of the dataset.</p>
+      <p>
+        Some columns, like 'Unnamed: 0' and 'support_indicator,' do not contain useful information and can be removed. 
+        Some columns need to be transformed to make the data easier to interpret, such as removing unnecessary strings like "dzieci" or "złoty". 
+        Rows with missing values (NaN) will be deleted, but to avoid losing too much data, some NaN values will be replaced with random values from the same column. 
+        Columns will also be converted into one-hot encoded columns. All data processing functions are included in the <span style="font-style: italic;">data_preparation.py</span> file. 
+        The cleaned data is then ready for preliminary analysis.
+      </p>
+      ''' + table_view_2 + '''
+            <p style="font-style: italic; font-size: 14px; text-align: center; margin-top: 2px;">Table 2. A representation of the first few rows of a dataset after data processing.</p>
+      
+      <h2>Sample charts for the data set</h2>
+      <p>All the charts I created in the file <span style="font-style: italic;">data_visualistion.py</span>.</p>
+      <div class="img_class">
+        <div class="box">
+          <div style="flex-direction: column;">
+            <img src="plots/age_income.png" arc="" style="margin-right: 30px;">
+            <p style="font-style: italic; font-size: 14px; text-align: center; margin-top: 2px;">Chart 1.</p>
+          </div>
+            A chart comparing age to annual salary, taking into account the type of education. Since there are many samples, simply including all the data does not provide much information. 
+            Only places of denser and rarer dots representing samples are visible. That's why I added a solid chart that shows the average annual salary by specific age group. 
+            So you can see that it fluctuates mainly in the range of PLN 20-25 thousand per year.
+        </div>
 
+        <div class="box">
+          <div style="flex-direction: column;">
+            <img src="plots/children_credit_history.png" arc="" style="margin-right: 30px;">
+            <p style="font-style: italic; font-size: 14px; text-align: center; margin-top: 2px;">Chart 2.</p>
+          </div>
+            The chart shows the relationship between the number of children and credit history. It illustrates that most loans are taken by individuals without children. 
+            With each additional child, the number of loans decreases.
+        </div>
 
+        <div class="box">
+          <div style="flex-direction: column;">
+            <img src="plots/income.png" arc="" style="margin-right: 30px;" >
+            <p style="font-style: italic; font-size: 14px; text-align: center; margin-top: 2px;">Chart 3.</p>
+          </div>            
+          The chart shows the distribution of average annual income in relation to the number of people. The largest group earns around 40,000 PLN annually, followed by incomes in the range of 15,000–20,000 PLN per year.
+        </div>
 
+        <div class="box">
+          <div style="flex-direction: column;">
+            <img src="plots/employment_type.png" arc="" style="margin-right: 30px;" >
+            <p style="font-style: italic; font-size: 14px; text-align: center; margin-top: 2px;">Chart 4.</p>
+          </div>
+            The chart shows employment types in relation to education level. An interesting observation is that, for each employment type, 
+            the majority of individuals have a secondary education, followed by primary education, rather than higher education as one might expect.
+        </div>
+      </div>
 
+      <h2>Classifier models</h2>
+      <p>I compared five classification models. I created the models in the file <span style="font-style: italic;">classification.py</span>.
+        <ul>
+          <li>Decision Tree Classifier</li>
+          <li>Random Forest Classifier</li>
+          <li>Support Vector Classifier</li>
+          <li>Gaussian Naive Bayes</li> 
+          <li>XGBoost Classifier</li>
+        </ul>
+        As you can see from the table below, the best-fitting models are random forest and XGBoost. The accuracy and specificity statistics of all models are very similar and high, but the exception is the sensitivity index, which in the case of the support vector machine and the naive Bayes classifier indicates 0, which may indicate some errors or problems with the data.
+      </p>
+      
+    ''' + results_classification_table + '''
+      <p style="font-style: italic; font-size: 14px; text-align: center; margin-top: 2px;">Table 3. Presentation of the performance metrics for the model fitting.</p>  
+      
+      <h3>Confusion matrix for each model</h3>
+      <div class="img_inline">
+        <div style="flex-direction: column;">
+          <img src="plots/plot_class_DTC.png" arc="Confusion matrix for Decision Tree Classifier">
+          <p style="font-style: italic; font-size: 14px; text-align: center; margin-top: 2px;">1. Confusion matrix for Decision Tree Classification model.</p>
+        </div>
+        <div style="flex-direction: column;">
+          <img src="plots/plot_class_RFC.png" arc="Confusion matrix for Random Forest Classifier">
+          <p style="font-style: italic; font-size: 14px; text-align: center; margin-top: 2px;">2. Confusion matrix for Random Forest Classification model.</p>
+        </div>
+        <div style="flex-direction: column;">
+          <img src="plots/plot_class_SVC.png" arc="Confusion matrix for Support Vector Machine Classifier">
+          <p style="font-style: italic; font-size: 14px; text-align: center; margin-top: 2px;">3. Confusion matrix for Support Vector Machine Classification model.</p>
+        </div>
+        <div style="flex-direction: column;">
+          <img src="plots/plot_class_GNB.png" arc="Confusion matrix for Gaussian Naive Bayes Classifier">
+          <p style="font-style: italic; font-size: 14px; text-align: center; margin-top: 2px;">4. Confusion matrix for Gaussian Naive Bayes model.</p>
+        </div>
+        <div style="flex-direction: column;">
+          <img src="plots/plot_class_XGBC.png" arc="Confusion matrix for XGBoost Classifier">
+          <p style="font-style: italic; font-size: 14px; text-align: center; margin-top: 2px;">5. Confusion matrix for XGBoost Classification model.</p>
+        </div>
+      </div>
+      
+      <p>The confusion matrices indicate high accuracy in classifying examples, but it is evident that the dataset has been significantly reduced. 
+        Initially, the dataset contained around 10,000 rows, so the test set should have about 2,000 samples. However, the confusion matrices show only 1,189 samples. 
+        This reduction is due to the removal of rows with missing values (NaN). This is not necessarily a bad number (probably ;P), because initially, 
+        I only used the method of deleting rows with NaN values, which resulted in only 585 samples, meaning the dataset was reduced by almost 3.5 times. 
+        After applying the method of replacing some NaN values with random values from the respective columns, the dataset was much less reduced.
+      </p>
+    </div>
+    <div class="footer"></div>
+  </div>
+</body>
+</html> 
+'''
 
+"""
+f = open('report_english.html', 'w', encoding='utf-8')
+f.write(script_english)
+f.close()
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+"""
