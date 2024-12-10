@@ -15,6 +15,7 @@ body, html {
 .dataframe {
     font-size: 12px;
     margin-bottom: 20px;
+    margin-top: 10px;
     margin: 0 auto;
 }
 .dataframe, .dataframe th, .dataframe td {
@@ -55,6 +56,7 @@ h1{
   flex-direction: column;
   align-items: center;
   gap: 20px;
+  margin-top: 10px;
 }
 .img_inline{
     display: flex;
@@ -73,3 +75,16 @@ img{
 table{
   align-items: center; 
 }
+pre {
+  margin: 0 auto;
+  background-color: #663399;
+  padding: 10px;
+  width: 70%;
+  border-radius: 5px;
+  font-family: 'Courier New', Courier, monospace;
+  overflow-x: auto;
+}
+code {
+  color: white;
+  font-size: large;
+}  
